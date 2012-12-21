@@ -13,7 +13,8 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */package com.jdom.util.time;
+ */
+package com.jdom.util.time;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,11 +23,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Level;
 import org.junit.Test;
-
-import com.jdom.util.time.TimeStrategy;
-import com.jdom.util.time.TimeUtil;
-import com.jdom.util.time.Timer;
-import com.jdom.util.time.TimerImpl;
 
 /**
  * Test {@link TimeUtil}.
@@ -144,4 +140,5 @@ public class TimeUtilTest {
 		assertTrue("Expected to receive a real clock!",
 				clock instanceof TimerImpl);
 	}
+
 }
