@@ -3,15 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jdom</groupId>
 	<artifactId>util.time</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 
 	<properties>
-		<util.log.log4j.version>0.0.1</util.log.log4j.version>
+		<util.log.log4j.version>0.0.2</util.log.log4j.version>
 		<jcip.annotations.version>1.0</jcip.annotations.version>
 		<junit.version>4.10</junit.version>
 		<maven.jar.plugin.version>2.3.2</maven.jar.plugin.version>
 		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
 		<jdk.compliance.version>1.6</jdk.compliance.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<distributionManagement>
