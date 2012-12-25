@@ -20,9 +20,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import org.apache.log4j.Level;
 import org.junit.Test;
+
+import com.jdom.logging.api.LogLevel;
+import com.jdom.logging.api.Logger;
 
 /**
  * Test {@link TimeUtil}.
@@ -123,9 +127,9 @@ public class TimeUtilTest {
 
 	@Test
 	public void testGetPriorityEnabledClockReturnsNullClockWhenPriorityNotEnabled() {
-		org.apache.log4j.Logger logger = org.apache.log4j.Logger
-				.getLogger(TimeUtilTest.class);
-		Timer clock = TimeUtil.getPriorityEnabledTimer(logger, Level.TRACE);
+		Logger logger = mock(Logger.class);
+		when(logger.isEnabledFor(LogLevel.TRACE)).thenReturn(false);
+		Timer clock = TimeUtil.getPriorityEnabledTimer(logger, LogLevel.TRACE);
 
 		assertSame("Expected to receive the null clock!", TimeUtil.NULL_TIMER,
 				clock);
@@ -133,9 +137,9 @@ public class TimeUtilTest {
 
 	@Test
 	public void testGetPriorityEnabledClockReturnsClockImplWhenPriorityEnabled() {
-		org.apache.log4j.Logger logger = org.apache.log4j.Logger
-				.getLogger(TimeUtilTest.class);
-		Timer clock = TimeUtil.getPriorityEnabledTimer(logger, Level.ERROR);
+		Logger logger = mock(Logger.class);
+		when(logger.isEnabledFor(LogLevel.ERROR)).thenReturn(true);
+		Timer clock = TimeUtil.getPriorityEnabledTimer(logger, LogLevel.ERROR);
 
 		assertTrue("Expected to receive a real clock!",
 				clock instanceof TimerImpl);

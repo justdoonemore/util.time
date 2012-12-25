@@ -13,12 +13,13 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */package com.jdom.util.time;
+ */
+package com.jdom.util.time;
 
 import java.util.Date;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import com.jdom.logging.api.LogLevel;
+import com.jdom.logging.api.Logger;
 
 public final class TimeUtil {
 
@@ -80,7 +81,7 @@ public final class TimeUtil {
 	 *            the priority level
 	 * @return the {@link Timer} instance
 	 */
-	public static Timer getPriorityEnabledTimer(Logger logger, Level level) {
+	public static Timer getPriorityEnabledTimer(Logger logger, LogLevel level) {
 		return (logger.isEnabledFor(level)) ? getTimer() : NULL_TIMER;
 	}
 
