@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+group="com.jdom"
+version="0.0.6"
+
+repositories {
+    maven {
+        credentials {
+           username nexusUsername
+           password nexusPassword
+        }
+        url nexusUrl
+    }
+}
+
+uploadArchives {
+    repositories {
+        maven {
+           credentials {
+              username nexusUsername
+              password nexusPassword
+           }
+           url releasesUrl
+        }
+    }
+}
+
+dependencies {
+   compile "net.jcip:jcip-annotations:1.0"
+   compile "com.jdom:util.log.api:0.0.4"
+   testCompile "junit:junit:4.11"
+   testCompile "org.powermock:powermock-module-junit4:1.5"
+   testCompile "org.powermock:powermock-api-mockito:1.5"
+}
