@@ -3,7 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'eclipse'
 
 group="com.jdom"
-version="0.0.6"
+version="0.0.7"
 
 repositories {
     maven {
@@ -16,15 +16,22 @@ repositories {
 }
 
 uploadArchives {
-    repositories {
-        maven {
-           credentials {
-              username nexusUsername
-              password nexusPassword
+   repositories {
+       mavenDeployer {
+	       repository(url: releasesUrl) {
+	           authentication(userName: nexusUsername, password: nexusPassword)
            }
-           url releasesUrl
-        }
-    }
+       }
+   }
+}
+
+task testJar(type: Jar) {
+    classifier = 'tests'
+    from sourceSets.test.output
+}
+
+artifacts {      
+	archives testJar
 }
 
 dependencies {
